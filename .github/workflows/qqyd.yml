@@ -15,14 +15,14 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-        QQREAD_HEADER: ${{ secrets.QQREAD_HEADER }}
-        QQREAD_TIMEHEADER: ${{ secrets.QQREAD_TIMEHEADER }}
-        QQREAD_TIMEURL: ${{ secrets.QQREAD_TIMEURL }}
+       QQ_READ_HEADER_VAL: ${{ secrets.QQ_READ_HEADER_VAL }}
+       QQ_READ_TIME_URL_VAL: ${{ secrets.QQ_READ_TIME_URL_VAL }}
+       QQ_READ_TIME_HEADER_VAL: ${{ secrets.QQ_READ_TIME_HEADER_VAL }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: lxmd01/youth
+          repository: lxmd01/Test
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -35,7 +35,7 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }} # 使用 package-lock.json 的 Hash 作为缓存的 key。也可以使用 package.json 代替
       - name: npm install 
-        if: env.QQREAD_HEADER
+        if: env.QQ_READ_HEADER_VAL
         run: |
           npm install
       - name: ' 运行 【企鹅阅读】'
