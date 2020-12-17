@@ -90,9 +90,9 @@ function getNodeCookie() {
   if ($.isNode()) {
     let QQ_READ_BODY_VAL = [], QQ_READ_TIME_URL_VAL = [], QQ_READ_TIME_HEADER_VAL = [];
     if (process.env.QQ_READ_HEADER_VAL) {
-      if (process.env.QQ_READ_HEADER_VAL.indexOf('@') > -1) {
-        console.log(`您的QQ_READ_HEADER_VAL选择的是用@隔开\n`)
-        QQ_READ_BODY_VAL = process.env.QQ_READ_HEADER_VAL.split('@');
+      if (process.env.QQ_READ_HEADER_VAL.indexOf('#') > -1) {
+        console.log(`您的QQ_READ_HEADER_VAL选择的是用#隔开\n`)
+        QQ_READ_BODY_VAL = process.env.QQ_READ_HEADER_VAL.split('#');
       } else if (process.env.QQ_READ_HEADER_VAL.indexOf('\n') > -1) {
         console.log(`您的QQ_READ_HEADER_VAL选择的是用换行隔开\n`)
         QQ_READ_BODY_VAL = process.env.QQ_READ_HEADER_VAL.split('\n');
@@ -103,9 +103,9 @@ function getNodeCookie() {
       // $.log(QQ_READ_HEADER_VAL)
     }
     if (process.env.QQ_READ_TIME_URL_VAL) {
-      if (process.env.QQ_READ_TIME_URL_VAL.indexOf('@') > -1) {
-        console.log(`您的QQ_READ_TIME_URL_VAL选择的是用@隔开\n`)
-        QQ_READ_TIME_URL_VAL = process.env.QQ_READ_TIME_URL_VAL.split('@');
+      if (process.env.QQ_READ_TIME_URL_VAL.indexOf('#') > -1) {
+        console.log(`您的QQ_READ_TIME_URL_VAL选择的是用#隔开\n`)
+        QQ_READ_TIME_URL_VAL = process.env.QQ_READ_TIME_URL_VAL.split('#');
       } else if (process.env.QQ_READ_HEADER_VAL.indexOf('\n') > -1) {
         console.log(`您的QQ_READ_TIME_URL_VAL选择的是用换行隔开\n`)
         QQ_READ_TIME_URL_VAL = process.env.QQ_READ_TIME_URL_VAL.split('\n');
@@ -115,9 +115,9 @@ function getNodeCookie() {
       // QQ_READ_TIME_URL_VAL = [...new Set(QQ_READ_TIME_URL_VAL)]
     }
     if (process.env.QQ_READ_TIME_HEADER_VAL) {
-      if (process.env.QQ_READ_TIME_HEADER_VAL.indexOf('@') > -1) {
-        console.log(`您的QQ_READ_TIME_HEADER_VAL选择的是用@隔开\n`)
-        QQ_READ_TIME_HEADER_VAL = process.env.QQ_READ_TIME_HEADER_VAL.split('@');
+      if (process.env.QQ_READ_TIME_HEADER_VAL.indexOf('#') > -1) {
+        console.log(`您的QQ_READ_TIME_HEADER_VAL选择的是用#隔开\n`)
+        QQ_READ_TIME_HEADER_VAL = process.env.QQ_READ_TIME_HEADER_VAL.split('#');
       } else if (process.env.QQ_READ_TIME_HEADER_VAL.indexOf('\n') > -1) {
         console.log(`您的QQ_READ_TIME_HEADER_VAL选择的是用换行隔开\n`)
         QQ_READ_TIME_HEADER_VAL = process.env.QQ_READ_TIME_HEADER_VAL.split('\n');
