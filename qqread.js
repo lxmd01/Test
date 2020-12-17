@@ -641,15 +641,8 @@ function qqreadpick() {
 }
 
 
-function showmsg() {	
-console.log(tz)
-let d = new Date(new Date().getTime() + 8 * 60 * 60 * 1000);
-
-if (d.getHours()==19&&d.getMinutes()>=40&&d.getMinutes()<=45){
-	notify.sendNotify(jsname,kz,'')//每天19点45分通知一次		
-}
-kz=''	
-tz=''
+function showmsg() {
+  $.msg(jsname, "", tz); // 宝箱每15次通知一次
 }
 
     
