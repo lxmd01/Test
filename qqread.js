@@ -13,7 +13,6 @@
 ziye
 本人github地址     https://github.com/ziye12/JavaScript 
 转载请备注个名字，谢谢
-
 11.25 增加 阅读时长上传，阅读金币，阅读随机金币
 11.25 修复翻倍宝箱不同时领取的问题.增加阅读金币判定
 11.25 修复阅读时长问题，阅读金币问题，请重新获取时长cookie
@@ -24,19 +23,11 @@ ziye
 11.28 修复错误
 12.1 调整通知为15次宝箱通知一次
 12.1 优化通知
-
 ⚠️cookie获取方法：
-
 进 https://m.q.qq.com/a/s/d3eacc70120b9a37e46bad408c0c4c2a  点我的   获取cookie
-
 进一本书 看 10秒以下 然后退出，获取阅读时长cookie，看书一定不能超过10秒
-
 可能某些页面会卡住，但是能获取到cookie，再注释cookie重写就行了！
-
-
-
 ⚠️宝箱奖励为20分钟一次，自己根据情况设置定时，建议设置11分钟一次
-
 hostname=mqqapi.reader.qq.com
 ############## 圈x
 #企鹅读书获取更新body
@@ -53,9 +44,6 @@ http-request https:\/\/mqqapi\.reader\.qq\.com\/mqq\/addReadTimeWithBid? script-
 企鹅读书获取更新body = type=http-request,pattern=https:\/\/mqqapi\.reader\.qq\.com\/log\/v4\/mqq\/track,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/lxk0301/jd_scripts/master/backUp/qqread.js, script-update-interval=0
 #企鹅读书获取时长cookie
 企鹅读书获取时长cookie = type=http-request,pattern=https:\/\/mqqapi\.reader\.qq\.com\/mqq\/addReadTimeWithBid?,script-path=https://raw.githubusercontent.com/lxk0301/jd_scripts/master/backUp/qqread.js
-
-
-
 */
 
 const jsname = '企鹅读书'
@@ -90,9 +78,9 @@ function getNodeCookie() {
   if ($.isNode()) {
     let QQ_READ_BODY_VAL = [], QQ_READ_TIME_URL_VAL = [], QQ_READ_TIME_HEADER_VAL = [];
     if (process.env.QQ_READ_HEADER_VAL) {
-      if (process.env.QQ_READ_HEADER_VAL.indexOf('#') > -1) {
-        console.log(`您的QQ_READ_HEADER_VAL选择的是用#隔开\n`)
-        QQ_READ_BODY_VAL = process.env.QQ_READ_HEADER_VAL.split('#');
+      if (process.env.QQ_READ_HEADER_VAL.indexOf('@') > -1) {
+        console.log(`您的QQ_READ_HEADER_VAL选择的是用@隔开\n`)
+        QQ_READ_BODY_VAL = process.env.QQ_READ_HEADER_VAL.split('@');
       } else if (process.env.QQ_READ_HEADER_VAL.indexOf('\n') > -1) {
         console.log(`您的QQ_READ_HEADER_VAL选择的是用换行隔开\n`)
         QQ_READ_BODY_VAL = process.env.QQ_READ_HEADER_VAL.split('\n');
@@ -103,8 +91,8 @@ function getNodeCookie() {
       // $.log(QQ_READ_HEADER_VAL)
     }
     if (process.env.QQ_READ_TIME_URL_VAL) {
-      if (process.env.QQ_READ_TIME_URL_VAL.indexOf('#') > -1) {
-        console.log(`您的QQ_READ_TIME_URL_VAL选择的是用#隔开\n`)
+      if (process.env.QQ_READ_TIME_URL_VAL.indexOf('@') > -1) {
+        console.log(`您的QQ_READ_TIME_URL_VAL选择的是用@隔开\n`)
         QQ_READ_TIME_URL_VAL = process.env.QQ_READ_TIME_URL_VAL.split('@');
       } else if (process.env.QQ_READ_HEADER_VAL.indexOf('\n') > -1) {
         console.log(`您的QQ_READ_TIME_URL_VAL选择的是用换行隔开\n`)
@@ -115,8 +103,8 @@ function getNodeCookie() {
       // QQ_READ_TIME_URL_VAL = [...new Set(QQ_READ_TIME_URL_VAL)]
     }
     if (process.env.QQ_READ_TIME_HEADER_VAL) {
-      if (process.env.QQ_READ_TIME_HEADER_VAL.indexOf('#') > -1) {
-        console.log(`您的QQ_READ_TIME_HEADER_VAL选择的是用#隔开\n`)
+      if (process.env.QQ_READ_TIME_HEADER_VAL.indexOf('@') > -1) {
+        console.log(`您的QQ_READ_TIME_HEADER_VAL选择的是用@隔开\n`)
         QQ_READ_TIME_HEADER_VAL = process.env.QQ_READ_TIME_HEADER_VAL.split('@');
       } else if (process.env.QQ_READ_TIME_HEADER_VAL.indexOf('\n') > -1) {
         console.log(`您的QQ_READ_TIME_HEADER_VAL选择的是用换行隔开\n`)
@@ -238,7 +226,9 @@ async function QQ_READ() {
  await showmsg();//通知
   }
 }
-
+function showmsg() {
+  $.msg(jsname, "", tz); // 宝箱每15次通知一次
+}
 //提现
 function qqreadwithdraw() {
   return new Promise((resolve, reject) => {
@@ -640,10 +630,6 @@ function qqreadpick() {
   });
 }
 
-
-function showmsg() {
-  $.msg(jsname, "", tz); // 宝箱每15次通知一次
-}
 
     
 
