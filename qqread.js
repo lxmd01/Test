@@ -644,13 +644,8 @@ function qqreadpick() {
 function showmsg() {	
 console.log(tz)
 let d = new Date(new Date().getTime() + 8 * 60 * 60 * 1000);
-let gold=Number(task.data.user.amount)
-if (gold >= 100000&&d.getHours()>=9&&d.getHours()<=20&&task.data.treasureBox.doneFlag==15){
-	notify.sendNotify(jsname,kz,'')//宝箱每15次通知一次
-	console.log('宝箱每15次通知一次')
-}
 
-else if (d.getHours()==19&&d.getMinutes()>=45&&d.getMinutes()<=55){
+if (d.getHours()==19&&d.getMinutes()>=40&&d.getMinutes()<=45){
 	notify.sendNotify(jsname,kz,'')//每天19点45分通知一次		
 }
 kz=''	
